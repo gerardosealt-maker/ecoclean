@@ -1,55 +1,36 @@
-# Eco-Clean Financiero PRO v7
+# Eco-Clean Financiero PRO v9
 
-Dashboard financiero para Eco-Clean: ventas diarias, meta diaria de $4,500 MXN, compras, gastos, ingresos extra, deudas, reportes y catálogos editables.
+Versión preparada para Vercel usando Yarn en lugar de npm, para evitar el error `npm error Exit handler never called`.
 
-## Importante
+## Qué contiene
 
-Esta versión está preparada para Vercel sin tocar configuración avanzada.
+- Dashboard financiero para Eco-Clean.
+- Meta diaria base: $4,500 MXN.
+- Meta mensual base: $117,000 MXN.
+- Captura de ventas, compras, gastos, ingresos extra y pagos de deuda.
+- Deudas, reportes, categorías, etiquetas y métodos de pago editables.
+- Supabase como almacenamiento en nube.
 
-- No usa `pnpm`.
-- No trae `vercel.json`.
-- No trae `.npmrc`.
-- No trae `package-lock.json` para evitar lockfiles generados fuera de Vercel.
-- Fija Node en `20.x` desde `package.json` para que Vercel no use Node 24 automáticamente.
+## Cómo subirlo
 
-## Subir a GitHub
+1. Crea un repo nuevo en GitHub.
+2. Sube el contenido de esta carpeta a la raíz del repo.
+3. En Vercel importa el repo.
+4. No cambies Build Settings.
+5. Solo agrega las variables de entorno.
 
-Sube el contenido de esta carpeta a la raíz del repositorio. En GitHub deben verse directamente:
+## Variables de entorno en Vercel
 
-- `app`
-- `components`
-- `docs`
-- `lib`
-- `package.json`
-- `next.config.mjs`
-
-No debe quedar una carpeta dentro de otra.
-
-## Vercel
-
-Importa el repositorio y no cambies Build Settings. Solo agrega Environment Variables:
-
-```env
 APP_PASSWORD=EcoClean2026*
 APP_SESSION_SECRET=eco-clean-juan-jose-sesion-segura-2026-cambiar
 SUPABASE_URL=https://efyoehfgsrmunxekpkhe.supabase.co/rest/v1/
-SUPABASE_SECRET_KEY=PEGA_AQUI_TU_SECRET_KEY_DE_SUPABASE
+SUPABASE_SECRET_KEY=TU_SECRET_KEY_DE_SUPABASE
 APP_STATE_ID=eco-clean
-```
 
 ## Supabase
 
-En Supabase abre SQL Editor, pega el contenido de:
+En Supabase, abre SQL Editor, pega el contenido de `docs/supabase-schema.sql` y ejecuta Run.
 
-```txt
-docs/supabase-schema.sql
-```
+## Importante
 
-y ejecuta Run.
-
-## Prueba final
-
-1. Entra con la contraseña.
-2. Registra una venta de prueba.
-3. Abre la app desde otro navegador o celular.
-4. Si la venta aparece, Supabase quedó conectado.
+No subas tu Secret Key a GitHub. Solo va en Vercel como Environment Variable.
